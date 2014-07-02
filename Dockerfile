@@ -1,3 +1,3 @@
 FROM scratch
-ADD helloworld /helloworld
+ADD $GOPATH/bin/helloworld /helloworld
 CMD ["/helloworld"]
