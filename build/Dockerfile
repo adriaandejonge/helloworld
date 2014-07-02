@@ -1,4 +1,5 @@
 FROM google/golang
-RUN go get github.com/adriaandejonge/helloworld
-RUN cp $GOPATH/src/github.com/adriaandejonge/helloworld/Dockerfile .
+RUN CGO_ENABLED=0 go get -a -ldflags '-s' github.com/adriaandejonge/helloworld
+RUN cp /gopath/src/github.com/adriaandejonge/helloworld/Dockerfile /gopath
+RUN cd /gopath
 CMD docker build -t adejonge/helloworld .
