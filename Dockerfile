@@ -1,3 +1,3 @@
 FROM scratch
-ADD bin/helloworld /helloworld
+ADD bin/linux_amd64/helloworld /helloworld
 CMD ["/helloworld"]
