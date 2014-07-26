@@ -11,17 +11,13 @@ var (
 	greeting = flag.String("greeting", "helloworld", "Greeting message")
 )
 
-func helloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello from %s", *greeting)
-}
-
 func main() {
 	flag.Parse()
-	http.HandleFunc("/", helloHandler)
-
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Hello from %s", *greeting)
+	})
 	fmt.Printf("Started, serving at %s", *addr)
-	err := http.ListenAndServe(*addr, nil)
-	if err != nil {
-		panic("ListenAndServe: " + err.Error())
+	if e := http.ListenAndServe(*addr, nil); e != nil {
+		panic("ListenAndServe: " + e.Error())
 	}
 }
