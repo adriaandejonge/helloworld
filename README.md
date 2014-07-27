@@ -1,10 +1,16 @@
 helloworld
 ==========
 
-Create Docker image FROM scratch
+This project serves a helloworld demo for how to use Docker to manage
+a system consisting of more than one programs.
 
-This GitHub repository belongs with the following blog post:
+This project contains two programs -- a search engine server
+(`searchengine`) and an indexer daemon (`indexer`).  `searchengine` is
+an HTTP server, which accepts queries and returns search results by
+looking up a data structure known as index.  It is also an RPC server,
+which accepts index udpates from `indexer`, which sends new index to
+`searchengine` every second.
 
-http://blog.xebia.com/2014/07/04/create-the-smallest-possible-docker-container/
-
-The helloworld.go provides a simple web server that says Hello World. The Dockerfile creates a Docker image from scratch and places the Hello World web server inside it.
+By using this project as an example, I wrote an article,
+[Docker: A Revolution](http://cxwangyi.github.io/docker.md), to show
+that how to manage systems of micro-service architecture.
