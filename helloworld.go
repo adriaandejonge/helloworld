@@ -1,20 +1,23 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"net/http"
 )
 
-func helloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello World from Go in minimal Docker container")
-}
+var (
+	addr     = flag.String("addr", ":8080", "The network address")
+	greeting = flag.String("greeting", "helloworld", "Greeting message")
+)
 
 func main() {
-	http.HandleFunc("/", helloHandler)
-
-	fmt.Println("Started, serving at 8080")
-	err := http.ListenAndServe(":8080", nil)
-	if err != nil {
-		panic("ListenAndServe: " + err.Error())
+	flag.Parse()
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Hello from %s", *greeting)
+	})
+	fmt.Printf("Started, serving at %s", *addr)
+	if e := http.ListenAndServe(*addr, nil); e != nil {
+		panic("ListenAndServe: " + e.Error())
 	}
 }
