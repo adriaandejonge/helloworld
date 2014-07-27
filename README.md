@@ -1,4 +1,4 @@
-## Managing systems of mutliple servers/daemons using Docker
+## Managing Complex Server Systems Using Docker
 
 This project is a demo showing how to use Docker to manage a system
 consisting of more than one programs.
