@@ -23,9 +23,8 @@ func main() {
 		}
 
 		index := map[string]string{
-			"news":     fmt.Sprint("Some news up to ", time.Now()),
-			"images":   fmt.Sprint("Some images up to", time.Now()),
-			"anything": fmt.Sprint("Anything up to", time.Now()),
+			"news":   fmt.Sprint("Some news up to ", time.Now()),
+			"images": fmt.Sprint("Some images up to", time.Now()),
 		}
 		var a int
 		if e := c.Call("SearchEngine.UpdateIndex", index, &a); e != nil {

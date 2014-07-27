@@ -32,7 +32,7 @@ func main() {
 			fmt.Fprintf(w, "query: %s\nresults:%s", q[0], se.index[q[0]])
 		}
 	})
-	fmt.Printf("Started, serving at %s", *addr)
+
 	if e := http.ListenAndServe(*addr, nil); e != nil {
 		panic("ListenAndServe: " + e.Error())
 	}
