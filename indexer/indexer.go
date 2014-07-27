@@ -27,7 +27,8 @@ func main() {
 			"images":   fmt.Sprint("Some images up to", time.Now()),
 			"anything": fmt.Sprint("Anything up to", time.Now()),
 		}
-		if e := c.Call("Update.Index", index, &map[string]string{}); e != nil {
+		var a int
+		if e := c.Call("SearchEngine.UpdateIndex", index, &a); e != nil {
 			log.Printf("Failed update index: %v", e)
 		}
 		c.Close()

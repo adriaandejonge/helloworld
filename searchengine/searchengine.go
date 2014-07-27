@@ -15,9 +15,14 @@ type SearchEngine struct {
 	index map[string]string
 }
 
+func (se *SearchEngine) UpdateIndex(index map[string]string, _ *int) error {
+	se.index = index
+	return nil
+}
+
 func main() {
 	flag.Parse()
-	var se SearchEngine
+	se := new(SearchEngine)
 	rpc.Register(se)
 	rpc.HandleHTTP()
 
